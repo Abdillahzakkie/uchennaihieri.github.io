@@ -1,7 +1,138 @@
-.banner {
+:root {
+    --mainTransition: all 2s ease-in-out;
+    --mainWhite: #f1f5f8;
+}
+
+.center {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    margin: 0 auto;
+}
+body {
+    overflow-x: hidden;
+}
+.heroBcg {
     margin-top: 70px;
     background: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5)),
-        url('../images/bg.jpeg') center/cover no-repeat;
+        url('../../Assets/hero.jpeg') center/cover no-repeat;
     width: 100vw;
-    height: 60vh;
+    height: 50vh;
+    position: relative;
+}
+.heroBcg .banner-feature {
+    position: absolute;
+    bottom: -35px;
+    left: 0;
+    width: 100vw;
+}
+.heroBcg .banner-feature .banner-filter{
+    width: 80vw;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 1rem;
+    grid-column-gap: .5rem;
+    background: var(--mainWhite);
+    place-items: center;
+}
+
+.heroBcg .banner-feature .banner-filter button {
+    width: 50px;
+    height: 40px;
+}
+
+/* Product container */
+.product-container{
+    grid-template-columns: repeat(3, 1fr);
+    margin: 70px auto 0;
+}
+
+@media (min-width: 767px){
+    .heroBcg .banner-feature .banner-filter button {
+        width: 150px;
+    }
+}
+
+
+.services-container {
+    /* margin: 1.5rem auto; */
+    margin: 4rem auto 0;
+    padding: 0 2rem;
+}
+.services {
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+}
+.services .card {
+    width: 90%;
+    height: 250px;
+    margin: 2rem auto;
+    /* padding: 0; */
+    background: var(--mainWhite);
+
+    position: relative;
+    transition: all 500ms ease-in-out;
+    overflow: hidden;
+    box-shadow: 5px 3px 10px 1.5px rgba(0,0,0, .5);
+
+}
+.services .card:hover {
+    box-shadow: 10px 10px 15px 1.5px rgba(0,0,0, .5);
+}
+.services .card img{
+    width: 100%;
+    height: 200px;
+    transition: var(--mainTransition);
+    overflow: hidden;
+}
+.services .card:hover img{
+    /* takes up the total height of the card */
+    height: 250px;
+    transform: scale(1.);
+    opacity: .75;
+}
+.services .card h2{
+    text-transform: uppercase;
+    font-size: 1.0rem;
+    padding: .5rem 1rem;
+    place-self: center;
+    margin: auto 0;
+}
+
+
+/* Features */
+.services .card .features{
+    opacity: 0;
+    position: absolute;
+    top: 42.5%;
+    left: 35%;
+    padding: .75rem 1rem;
+    background: transparent;
+    border: .11rem solid var(--mainWhite);
+    color: var(--mainWhite);
+    transition: var(--mainTransition);
+    text-transform: capitalize;
+}
+.services .card:hover .features{
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+@media (max-width: 599px) {
+    .services-container {
+        padding: 0 ;
+    }
+    .services .card {
+        margin: 0 auto 2rem;
+        padding: 0 ;
+    }
+    @media (min-width: 321px) and (max-width: 375px) {
+        .services .card .features{
+            left: 37.5%;
+        }
+    }
+    @media (min-width: 376px) and (max-width: 539px) {
+        .services .card .features{
+            left: 40%;
+        }
+    }
 }
